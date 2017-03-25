@@ -1,7 +1,25 @@
 $navbar-default-bg: #8C1717;
 
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.jumbotron {
+  background-image: asset-url('meat.jpg');
+  background-size: cover;
+  height: 300px;
+  color: white;
+}
+
+
+.jumbotron h1 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;
+}
 
 #logo {
   float: left;
@@ -17,4 +35,41 @@ $navbar-default-bg: #8C1717;
 }
 .center {
   text-align: center;
+}
+
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #8C1717;
+  color: #777;
+}
+
+footer nav {
+  color: #000;
+}
+
+footer a {
+  color: #000;
+}
+
+footer a:hover {
+  color: #666;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  color: #000;
+  float: left;
+  margin-left: 15px;
 }
