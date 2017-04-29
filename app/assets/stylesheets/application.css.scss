@@ -1,19 +1,21 @@
-$navbar-default-bg: #8C1717;
-
+$navbar-default-bg: #C65D57;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 .jumbotron {
-  background-image: asset-url('meat.jpg');
+  background-image: asset-url('lion2.png');
   background-size: cover;
   height: 300px;
   color: white;
 }
 
+body {
+  background-color: #fffbf8;
+}
 
 .jumbotron h1 {
-  color: #fff;
+  color: #white;
   text-align: center;
   margin-bottom: 30px;
   letter-spacing: 2px;
@@ -36,7 +38,6 @@ $navbar-default-bg: #8C1717;
 .center {
   text-align: center;
 }
-
 
 /* footer */
 
@@ -72,4 +73,16 @@ footer ul li {
   color: #000;
   float: left;
   margin-left: 15px;
+}
+
+.description {
+  margin-top: 0;
+}
+
+.well {
+  font-size: 1.5em;
+}
+
+.well a {
+  color: #C65D57;
 }
