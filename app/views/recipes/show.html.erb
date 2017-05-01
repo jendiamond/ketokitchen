@@ -1,7 +1,17 @@
-<h1 align="center"><%= @recipe.name.capitalize %></h1>
-<hr />
+<%= render 'shared/page_title', title: @recipe.name %>
+
 <div class="well col-md-8 col-md-offset-2">
-  <small>Created by:<%= @recipe.chef.chefname %> | <%= time_ago_in_words(@recipe.created_at) %> ago </small>
-  <hr />
-  <%= @recipe.description %>
+  <%= simple_format(@recipe.description) %>
+  <hr/>
+  <div id='created_by' class='pull-right'>
+    <p class='center text-muted'>
+    <p class='center'>
+      <%= link_to gravatar_for(@recipe.chef), recipes_path %>
+    </p>
+    <p class='center text-muted text-capitalize'>
+      <small><sub><em>created by:</em></sub></small><br/>
+      <small><%= @recipe.chef.chefname.capitalize %><br/>
+      <sup><%= time_ago_in_words(@recipe.created_at) %> ago</sup></small>
+    </p>
+  </div>
 </div>
