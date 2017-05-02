@@ -28,8 +28,16 @@ class RecipesTest < ActionDispatch::IntegrationTest
     get recipe_path(@recipe1)
     assert_response :success
     assert_template 'recipes/show'
-    assert_match @recipe1.name.capitalize, response.body
+    assert_match @recipe1.name, response.body
     assert_match @recipe1.description, response.body
     assert_match @chef.chefname, response.body
+  end
+
+  test 'create new, valid recipe' do
+    get new_recipe_path
+  end
+
+  test 'reject invalid recipe submissions' do
+    get new_recipe_path
   end
 end
