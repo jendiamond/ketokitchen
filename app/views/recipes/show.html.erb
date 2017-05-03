@@ -1,6 +1,22 @@
 <%= render 'shared/page_title', title: @recipe.name %>
 
-<div class="well col-md-8 col-md-offset-2">
+  <div id='created_by' class='pull-left'>
+    <p class='center text-muted'>
+    <p class='center'>
+      <%= link_to gravatar_for(@recipe.chef), recipes_path %>
+    </p>
+    <p class='center text-muted text-capitalize'>
+      <small><%= @recipe.chef.chefname.capitalize %><br/>
+    </p>
+  </div>
+
+<div class=' col-md-8 back-buttons col-md-offset-1'>
+  <%= link_to "Cancel", recipe_path(params[:id]) %> | 
+            <%= link_to "Return to your Recipe", recipe_path(params[:id]) %> | 
+  <%= link_to "Return to the Recipes List", recipes_path %>
+</div>
+
+<div class="well col-md-8 col-md-offset-1">
   <%= simple_format(@recipe.description) %>
   <hr/>
   <div id='created_by' class='pull-right'>
