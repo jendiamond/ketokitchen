@@ -12,7 +12,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
     @recipe2.save
   end
 
-  test 'should get recipes index page' do
+  test 'should get recipes/index page' do
     get recipes_path
     assert_response :success
   end
@@ -24,13 +24,14 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', recipe_path(@recipe2), text: @recipe2.name
   end
 
-  test 'should get recipes show page' do
+  test 'should get recipes/show page' do
     get recipe_path(@recipe1)
     assert_response :success
     assert_template 'recipes/show'
     assert_match @recipe1.name, response.body
     assert_match @recipe1.description, response.body
     assert_match @chef.chefname, response.body
+    assert_select 'a[href=?]', edit_recipe_path(@recipe1), text: 'Edit this recipe'
   end
 
   test 'create new, valid recipe' do
