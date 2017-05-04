@@ -13,6 +13,8 @@
 <div class=' col-md-8 back-buttons col-md-offset-1'>
   <%= link_to "Cancel", recipe_path(params[:id]) %> | 
   <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> | 
+  <%= link_to "Delete this recipe", recipe_path(@recipe), method: :delete,
+                                     data: { confirm: "Are you sure? "}  %> | 
   <%= link_to "Return to the Recipes List", recipes_path %>
 </div>
 
