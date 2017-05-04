@@ -14,6 +14,18 @@ body {
   background-color: #fffbf8;
 }
 
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #ccc;
+}
+
+.navbar-default .navbar-nav > li > a:focus {
+  color: #000;
+}
+
 .jumbotron h1 {
   color: #white;
   text-align: center;
