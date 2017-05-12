@@ -9,6 +9,9 @@
           <li><%= link_to gravatar_for(chef), chef_path(chef) %></li>
           <li class='chef-title'><%=link_to chef.chefname.capitalize, chef_path(chef) %></li>
           <li><small><%= pluralize(chef.recipes.count, "recipe") if chef.recipes %></small></li>
+          <li><%= link_to 'Edit', edit_chef_path(chef) %> |
+              <%= link_to 'Delete', chef_path(chef), method: :delete,
+                          data: { confirm: 'Are you sure? Your profile and all your associated recipes will be destroyed.'} %></li>
        </div>
       </div>
     </ul>
