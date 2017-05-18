@@ -1,33 +1,29 @@
 <%= render 'shared/page_title', title: @recipe.name %>
 
-  <div id='created_by' class='pull-left'>
-    <p class='center text-muted'>
-    <p class='center'>
-      <%= link_to gravatar_for(@recipe.chef), recipes_path %>
-    </p>
-    <p class='center text-muted text-capitalize'>
-      <small><%= @recipe.chef.chefname.capitalize %><br/>
-    </p>
-  </div>
-
-<div class=' col-md-8 back-buttons col-md-offset-1'>
-  <%= link_to "Cancel", recipe_path(params[:id]) %> | 
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> | 
-  <%= link_to "Delete this recipe", recipe_path(@recipe), method: :delete,
-                                     data: { confirm: "Are you sure? "}  %> | 
-  <%= link_to "Return to the Recipes List", recipes_path %>
+<div class='pull-left'>
+  <p class='center text-muted'>
+  <p>
+    <%= link_to gravatar_for(@recipe.chef, size: 120), recipes_path %>
+  </p>
+  <h5 class='center text-muted text-capitalize'>Chef</h5>
+  <p class='center text-muted text-capitalize'>
+    <small><%= @recipe.chef.chefname.capitalize %><br/>
+  </p>
 </div>
 
-<div class="well col-md-8 col-md-offset-1">
+<div class='well col-md-8 col-md-offset-1'>
+  <div class='button-actions'>
+  <% if logged_in? && current_chef == @recipe.chef %>
+    <%= link_to 'Edit', edit_recipe_path(@recipe), class:'btn btn-xs btn-warning' %>
+    <%= link_to 'Delete', recipe_path(@recipe), method: :delete,
+                                     data: { confirm: 'Are you sure? '},
+                                     class: 'btn btn-xs btn-danger' %>
+    <% end %>
+    <%= link_to 'My Recipes', chef_path(@recipe.chef), class:'btn btn-xs btn-info' %>
+    <%= link_to 'All Recipes', recipes_path, class:'btn btn-xs btn-success' %>
+  </div>
+  <hr/>
+  <h3><%= @recipe.name %></h3>
   <%= simple_format(@recipe.description) %>
   <hr/>
-  <div id='created_by' class='pull-right'>
-    <p class='center text-muted'>
-    <p class='center'>
-      <%= link_to gravatar_for(@recipe.chef), recipes_path %>
-    </p>
-    <p class='center text-muted text-capitalize'>
-      <small><%= @recipe.chef.chefname.capitalize %><br/>
-    </p>
-  </div>
 </div>

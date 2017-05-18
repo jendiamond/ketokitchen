@@ -23,12 +23,15 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'pry', '~> 0.10.3'
+  gem 'simplecov', '~> 0.12.0', :require => false, :group => :test
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'awesome_print', '~> 1.7'
   gem 'listen', '~> 3.0.5'
+  gem 'meta_request', '~> 0.4.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'

@@ -1,17 +1,25 @@
 <% obj.each do |recipe| %>
-  <div class="row">
-    <div class="col-md-2">
-      <section class="chef_info center">
+  <div class='row'>
+    <div class='col-md-2'>
+      <section class='chef_info center'>
         <%= gravatar_for(recipe.chef, size: 120) %>
       </section>
     </div>
-    <div class="col-md-8 well">
+    <div class='col-md-8 well'>
       <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
       <p><%= truncate(recipe.description, length: 150) %></p>
-      <p>
-        <span class="quiet"><small>Created 
+
+      <% if logged_in? && current_chef == recipe.chef %>
+        <div class='button-actions chef-buttons'>
+          <%= link_to 'Edit', edit_recipe_path(recipe), class: 'btn btn-xs btn-warning' %>
+          <%= link_to 'My Recipes', chef_path(current_chef), class:'btn btn-xs btn-info' %>
+          <%= link_to 'Delete', recipe_path(recipe), method: :delete,
+                                     data: { confirm: 'Are you sure?' },
+                                     class: 'btn btn-xs btn-danger' %>
+          <span class='quiet'><small>Created 
         <%= time_ago_in_words(recipe.created_at) %> ago</small></span>
-      </p> 
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>
