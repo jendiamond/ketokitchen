@@ -1,6 +1,13 @@
-<%= render 'shared/page_title', title: 'Edit your profile' %>
+<%= render 'shared/page_title', title: 'Manage your profile' %>
 
 <%= render 'shared/errors', obj: @chef %>
 
 <%= render 'form' %>
 
+<hr/>
+
+<div class='button-actions chef-buttons col-md-offset-2'>
+  <%= link_to 'Delete Your Profile and all your Recipes Permanently', chef_path(@chef), method: :delete,
+                data: { confirm: 'Are you sure? Your profile and all your associated recipes will be destroyed.'},
+                class: 'btn btn-lg btn-danger' %>
+</div>
