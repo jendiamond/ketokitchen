@@ -13,9 +13,9 @@
 
 <div class='well col-md-8 col-md-offset-1'>
   <div class='button-actions'>
-  <% if logged_in? && current_chef == @recipe.chef %>
-    <%= link_to 'Edit', edit_recipe_path(@recipe), class:'btn btn-xs btn-warning' %>
-    <%= link_to 'Delete', recipe_path(@recipe), method: :delete,
+    <% if logged_in? && (current_chef == @recipe.chef || current_chef.admin? ) %>
+      <%= link_to 'Edit', edit_recipe_path(@recipe), class:'btn btn-xs btn-warning' %>
+      <%= link_to 'Delete', recipe_path(@recipe), method: :delete,
                                      data: { confirm: 'Are you sure? '},
                                      class: 'btn btn-xs btn-danger' %>
     <% end %>

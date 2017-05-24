@@ -9,7 +9,7 @@
       <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
       <p><%= truncate(recipe.description, length: 150) %></p>
 
-      <% if logged_in? && current_chef == recipe.chef %>
+      <% if logged_in? && ( current_chef == recipe.chef || current_chef.admin? ) %>
         <div class='button-actions chef-buttons'>
           <%= link_to 'Edit', edit_recipe_path(recipe), class: 'btn btn-xs btn-warning' %>
           <%= link_to 'My Recipes', chef_path(current_chef), class:'btn btn-xs btn-info' %>
