@@ -19,7 +19,7 @@
                                      data: { confirm: 'Are you sure? '},
                                      class: 'btn btn-xs btn-danger' %>
     <% end %>
-    <%= link_to 'My Recipes', chef_path(@recipe.chef), class:'btn btn-xs btn-info' %>
+    <%= link_to "This Chef's Recipes", chef_path(@recipe.chef), class:'btn btn-xs btn-info' %>
     <%= link_to 'All Recipes', recipes_path, class:'btn btn-xs btn-success' %>
   </div>
   <hr/>

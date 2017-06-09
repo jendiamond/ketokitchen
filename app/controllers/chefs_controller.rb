@@ -4,7 +4,7 @@ class ChefsController < ApplicationController
   before_action :require_admin, only: [:destroy]
 
   def index
-    @chefs = Chef.paginate(page: params[:page], per_page: 5)
+    @chefs = Chef.paginate(page: params[:page], per_page: 6)
   end
 
   def new

@@ -1,5 +1,11 @@
 <%= render 'shared/page_title', title: "Chef #{@chef.chefname}" %>
 
+<% if logged_in? && (current_chef == @chef || current_chef.admin? ) %>
+  <div align="center" >
+    <%= link_to 'Create a New Recipe', new_recipe_path, class: "btn btn-info new-recipe" %>
+  </div>
+<% end %>
+
 <div align="center">
   <%= will_paginate @chef_recipes %>
 </div>

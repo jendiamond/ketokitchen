@@ -12,7 +12,6 @@
       <% if logged_in? && ( current_chef == recipe.chef || current_chef.admin? ) %>
         <div class='button-actions chef-buttons'>
           <%= link_to 'Edit', edit_recipe_path(recipe), class: 'btn btn-xs btn-warning' %>
-          <%= link_to 'My Recipes', chef_path(current_chef), class:'btn btn-xs btn-info' %>
           <%= link_to 'Delete', recipe_path(recipe), method: :delete,
                                      data: { confirm: 'Are you sure?' },
                                      class: 'btn btn-xs btn-danger' %>
