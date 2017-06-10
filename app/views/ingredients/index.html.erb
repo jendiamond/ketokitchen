@@ -1,0 +1,17 @@
+<%= render 'shared/page_title', title: 'Available ingredients' %>
+<div align='center'>
+  <%= will_paginate %>
+  <% @ingredients.in_groups_of(3, false).each do |group| %>
+    <% group.each do |ingrdnt| %>
+      <ul class='listing'>
+        <div class='well col-md-3 chef-listing'>
+          <li class='chef-title'><%=link_to ingrdnt.name.capitalize, ingredient_path(ingrdnt) %></li>
+          <li><small><%= pluralize(ingrdnt.recipes.count, "recipe") if ingrdnt.recipes %></small></li>
+          <% if logged_in? && current_chef.admin? %>
+            <li><%= link_to 'Edit this ingredient', ingredient_path(ingrdnt) %></li>
+          <% end %>
+        </div>
+      </ul>
+    <% end %>
+  <% end %>
+</div>

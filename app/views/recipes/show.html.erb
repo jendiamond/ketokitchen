@@ -3,7 +3,7 @@
 <div class='pull-left'>
   <p class='center text-muted'>
   <p>
-    <%= link_to gravatar_for(@recipe.chef, size: 120), recipes_path %>
+    <%= link_to gravatar_for(@recipe.chef, size: 120), chef_path(@recipe.chef) %>
   </p>
   <h5 class='center text-muted text-capitalize'>Chef</h5>
   <p class='center text-muted text-capitalize'>

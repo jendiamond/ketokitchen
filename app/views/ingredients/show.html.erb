@@ -1,0 +1,23 @@
+<%= render 'shared/page_title', title: @ingredient.name %>
+
+<% if logged_in? && (current_chef.admin? ) %>
+  <div align="center" >
+    <%= link_to 'Create a New Ingredient', new_ingredient_path, class: "btn btn-info new-recipe" %>
+  </div>
+<% end %>
+
+<% if @ingredient.recipes.count != 0 %>
+  <div align="center">
+    <%= will_paginate @ingredient_recipes %>
+  </div>  
+
+  <%= render 'recipes/recipe', obj: @ingredient_recipes %>  
+
+  <div align="center">
+    <%= will_paginate @ingredient_recipes %>
+  </div>
+<% else %>
+
+  <h4 align="center"><%= @ingredient.ingredient.name.capitalize %> has no recipes yet</h4>
+<% end %>
+
