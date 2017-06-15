@@ -33,7 +33,7 @@ end
   end
 
   test "maximum length for description" do
-    @recipe.description = "a" * 1501
+    @recipe.description = "a" * 5001
     assert_not @recipe.valid?
   end
 

@@ -11,6 +11,7 @@
           <%= f.text_field :name, class: "form-control", placeholder: "Name of recipe", autofocus: true %>
         </div>
       </div>
+
       <div class="form-group">
         <div class="control-label col-md-2">
           <%= f.label :description %>
@@ -19,11 +20,21 @@
           <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Enter the directions to create your recipe" %>
         </div>
       </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-8">
+            <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |cb| %>
+              <% cb.label(class: "checkbox-inline input_checkbox") { cb.check_box(class: "checkbox") + cb.text } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
       <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-          <%= f.submit class: "btn btn-danger btn-lg btn-xs" %>
-          <%= link_to "Cancel", recipe_path(@recipe), class: "btn btn-info btn-lg btn-xs" %>
-          <%= link_to "Return to All Recipes", recipes_path, class: "btn btn-success btn-lg btn-xs" %>
+          <%= f.submit class: "btn btn-danger btn-lg" %>
+          <%= link_to "Return to All Recipes", recipes_path, class: "btn btn-success btn-lg" %>
         </div>
       </div>
     <% end %>

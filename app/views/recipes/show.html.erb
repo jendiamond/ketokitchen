@@ -22,8 +22,14 @@
     <%= link_to "This Chef's Recipes", chef_path(@recipe.chef), class:'btn btn-xs btn-info' %>
     <%= link_to 'All Recipes', recipes_path, class:'btn btn-xs btn-success' %>
   </div>
+
   <hr/>
   <h3><%= @recipe.name %></h3>
+
+  <% if @recipe.ingredients.any? %>
+    <p>Ingredients: <%= render @recipe.ingredients %></p>
+  <% end %>
+
   <%= simple_format(@recipe.description) %>
   <hr/>
 </div>
