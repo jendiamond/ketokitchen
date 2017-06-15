@@ -8,7 +8,7 @@
           <li class='chef-title'><%=link_to ingrdnt.name.capitalize, ingredient_path(ingrdnt) %></li>
           <li><small><%= pluralize(ingrdnt.recipes.count, "recipe") if ingrdnt.recipes %></small></li>
           <% if logged_in? && current_chef.admin? %>
-            <li><%= link_to 'Edit this ingredient', ingredient_path(ingrdnt) %></li>
+            <li><%= link_to 'Edit', edit_ingredient_path(ingrdnt) %></li>
           <% end %>
         </div>
       </ul>

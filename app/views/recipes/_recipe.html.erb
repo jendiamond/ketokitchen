@@ -1,6 +1,5 @@
 <% obj.each do |recipe| %>
   <div class='row'>
-
     <div class='col-md-8 well'>
       <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
       <p><%= truncate(recipe.description, length: 150) %></p>
@@ -15,11 +14,11 @@
           <%= link_to 'Delete', recipe_path(recipe), method: :delete,
                                      data: { confirm: 'Are you sure?' },
                                      class: 'btn btn-xs btn-danger' %>
-      <% end %>
-          <span class='quiet'><small>Created 
-        <%= time_ago_in_words(recipe.created_at) %> ago by <%= recipe.chef.chefname.capitalize %> </small></span>
         </div>
+      <% end %>
+      <span class='quiet'><small>
+          Created <%= time_ago_in_words(recipe.created_at) %> ago by <%= recipe.chef.chefname.capitalize %>
+      </small></span>
     </div>
-
   </div>
 <% end %>
