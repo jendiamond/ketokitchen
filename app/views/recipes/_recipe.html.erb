@@ -1,6 +1,7 @@
 <% obj.each do |recipe| %>
   <div class='row'>
-    <div class='col-md-8 well'>
+
+    <div class='well col-md-10 col-md-offset-1'>
       <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
       <p><%= truncate(recipe.description, length: 150) %></p>
 
@@ -16,9 +17,16 @@
                                      class: 'btn btn-xs btn-danger' %>
         </div>
       <% end %>
-      <span class='quiet'><small>
-          Created <%= time_ago_in_words(recipe.created_at) %> ago by <%= recipe.chef.chefname.capitalize %>
-      </small></span>
+
+      <div class= 'created-by'>
+        <span class='quiet'>
+          <small>
+            <%= link_to gravatar_for(recipe.chef, size: 60), chef_path(recipe.chef) %>
+            Created <%= time_ago_in_words(recipe.created_at) %> ago by <%= link_to (recipe.chef.chefname.capitalize), chef_path(recipe.chef) %>
+          </small>
+        </span>
+      </div>
     </div>
+
   </div>
 <% end %>

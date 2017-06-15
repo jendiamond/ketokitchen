@@ -1,24 +1,32 @@
 <%= render 'shared/page_title', title: "Chef #{@chef.chefname}" %>
 
 <% if logged_in? && (current_chef == @chef || current_chef.admin? ) %>
-  <div align="center" >
-    <%= link_to 'Create a New Recipe', new_recipe_path, class: "btn btn-info new-recipe" %>
+  <div align='center'>
+    <div class='well chef-listing'>
+      <div align="center" >
+        <%= gravatar_for(@chef, size: 70) %> <%= link_to 'Create a New Recipe', new_recipe_path,
+            class: "btn btn-info new-recipe btn-lg" %>
+      </div>
+    </div>
   </div>
 <% end %>
 
-<% if @chef.recipes.count != 0 %>
-  <div align="center">
-    <%= will_paginate @chef_recipes %>
-  </div>
 
-  <%= render 'recipes/recipe', obj: @chef_recipes %>  
+  <% if @chef.recipes.count != 0 %>
+    <div align="center">
+      <%= will_paginate @chef_recipes %>
+    </div>
 
-  <div align="center">
-    <%= will_paginate @chef_recipes %>
-  </div>
-<% else %>
-<section class='chef_info center'>
-        <%= gravatar_for(@chef, size: 120) %>
-      </section>
-  <h4 align="center"><%= @chef.chefname.capitalize %> has no recipes yet</h4>
-<% end %>
+    <%= render 'recipes/recipe', obj: @chef_recipes %>
+
+    <div align="center">
+      <%= will_paginate @chef_recipes %>
+    </div>
+
+  <% else %>
+    <section class='chef_info center'>
+      <%= gravatar_for(@chef, size: 120) %>
+    </section>
+    <h4 align="center"><%= @chef.chefname.capitalize %> has no recipes yet</h4>
+  <% end %>
+

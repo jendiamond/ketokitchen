@@ -1,4 +1,4 @@
-<%= render 'shared/page_title', title: @ingredient.name %>
+<%= render 'shared/page_title', title: "Recipes containing #{@ingredient.name}" %>
 
 <% if logged_in? && (current_chef.admin? ) %>
   <div align="center">

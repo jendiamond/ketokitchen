@@ -1,20 +1,19 @@
 <%= render 'shared/page_title', title: @recipe.name %>
 
 <div class='pull-left'>
-  <p class='center text-muted'>
+  <p class='center'>
   <p>
     <%= link_to gravatar_for(@recipe.chef, size: 120), chef_path(@recipe.chef) %>
   </p>
-  <h5 class='center text-muted text-capitalize'>Chef</h5>
   <p class='center text-muted text-capitalize'>
-    <small><%= @recipe.chef.chefname.capitalize %><br/>
+    <small><%= link_to (@recipe.chef.chefname), chef_path(@recipe.chef) %><br/>
   </p>
 </div>
 
 <div class='well col-md-8 col-md-offset-1'>
   <div class='button-actions'>
     <% if logged_in? && (current_chef == @recipe.chef || current_chef.admin? ) %>
-      <%= link_to 'Edit', edit_recipe_path(@recipe), class:'btn btn-xs btn-warning' %>
+      <%= link_to 'Edit', edit_recipe_path(@recipe), class: 'btn btn-xs btn-warning' %>
       <%= link_to 'Delete', recipe_path(@recipe), method: :delete,
                                      data: { confirm: 'Are you sure? '},
                                      class: 'btn btn-xs btn-danger' %>
