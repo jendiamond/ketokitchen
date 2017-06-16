@@ -22,7 +22,8 @@
         <span class='quiet'>
           <small>
             <%= link_to gravatar_for(recipe.chef, size: 60), chef_path(recipe.chef) %>
-            Created <%= time_ago_in_words(recipe.created_at) %> ago by <%= link_to (recipe.chef.chefname.capitalize), chef_path(recipe.chef) %>
+            Created <%= time_ago_in_words(recipe.created_at) %> ago by <%= link_to (recipe.chef.chefname.capitalize), chef_path(recipe.chef) %> | 
+            <%= pluralize(recipe.comments.count, 'Comment') %>
           </small>
         </span>
       </div>

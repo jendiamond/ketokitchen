@@ -15,11 +15,11 @@
     <% if logged_in? && (current_chef == @recipe.chef || current_chef.admin? ) %>
       <%= link_to 'Edit', edit_recipe_path(@recipe), class: 'btn btn-xs btn-warning' %>
       <%= link_to 'Delete', recipe_path(@recipe), method: :delete,
-                                     data: { confirm: 'Are you sure? '},
+                                     data: { confirm: 'Are you sure?'},
                                      class: 'btn btn-xs btn-danger' %>
     <% end %>
-    <%= link_to "This Chef's Recipes", chef_path(@recipe.chef), class:'btn btn-xs btn-info' %>
-    <%= link_to 'All Recipes', recipes_path, class:'btn btn-xs btn-success' %>
+    <%= link_to "This Chef's Recipes", chef_path(@recipe.chef), class: 'btn btn-xs btn-info' %>
+    <%= link_to 'All Recipes', recipes_path, class: 'btn btn-xs btn-success' %>
   </div>
 
   <hr/>
@@ -32,3 +32,46 @@
   <%= simple_format(@recipe.description) %>
   <hr/>
 </div>
+
+<% if logged_in? %>
+
+  <div class='row'>
+    <div class='col-md-8 col-md-offset-2'>
+      <h3>Comments</h3>
+      <hr/>
+      <%= form_for([@recipe, @comment], :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
+
+        <div class='form-group'>
+          <div class='col-md-12'>
+            <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: 'Enter your comment' %>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <div class='col-md-10'>
+            <%= f.submit 'Submit Comment', class: 'btn btn-danger btn-lg' %>
+          </div>
+        </div>
+      <% end %>
+      <hr/>
+    </div>
+  </div>
+<% end %>
+
+<% if @recipe.comments != 0 %>
+  <div class='row'>
+    <div class='col-md-8 col-md-offset-2'>
+      <hr/>
+      <h3>Comments</h3>
+      <div ids='messages'>
+        <p><%= render partial: 'comments/comments', object: @comments %></p>
+      </div
+    </div>
+  </div>
+<% else %>
+  <div class='row'>
+    <div class='col-md-8 col-md-offset-2'>
+      <h3><%= @recipe.name %></h3>
+    </div>
+  </div>
+<% end %>
